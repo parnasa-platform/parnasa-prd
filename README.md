@@ -6,7 +6,7 @@ Read it at https://parnasa-platform.github.io/parnasa-prd/
 
 ## Comments
 
-Every use case and every requirement has a Discuss button, and the Comments button in the top bar is for the document as a whole. Comments are stored as GitHub Discussions in this repository and need a GitHub account.
+Select any text on the page and annotate it with Hypothesis. The sidebar on the right lists every annotation. Annotating needs a free Hypothesis account.
 
 ## Changes
 
