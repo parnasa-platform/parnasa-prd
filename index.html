@@ -133,6 +133,11 @@ summary:hover button.talk, button.talk:focus { opacity:1; border-color:var(--par
 .drawer .dclose { margin-left:auto; font:inherit; font-size:12px; border:1px solid var(--rule2); background:#fff; border-radius:4px; padding:3px 9px; cursor:pointer; }
 .drawer .dbody { overflow:auto; padding:12px 18px 24px; flex:1; }
 
+/* Hypothesis notes inside a level */
+summary.has-notes > .ut::after, summary.has-notes > .mt::after, summary.has-notes > .rt::after,
+details.sec > summary.has-notes h2::after { content:"notes"; display:inline-block; font-family:"JetBrains Mono", monospace; font-size:9.5px; font-weight:600; letter-spacing:.06em; color:#7A5A00; background:#FFF3C4; border-radius:3px; padding:1px 6px; margin-left:10px; vertical-align:2px; }
+details.sec > summary.has-notes h2::after { font-size:11px; vertical-align:4px; }
+
 .hidden { display:none !important; }
 
 @media (max-width:760px) {
@@ -198,7 +203,7 @@ summary:hover button.talk, button.talk:focus { opacity:1; border-color:var(--par
 </table></div></details>
 <details class="sec" id="s3" open><summary><h2><span>03</span>How to read this document</h2></summary><div class="secbody">
 <p>The core loop is <b>onboard, fund, trade and withdraw</b> (C1 to C4). The other customer use cases support it, and the staff use cases (S1 to S6) control it. A use case can contain smaller use cases, down to the level that is easiest to follow. Requirements sit at the level they belong to. Where there is more than one way to do something, the use case is marked as a choice and each option has its own requirements.</p>
-<p>Every level opens and closes. Select Discuss on a use case or a requirement to comment on it, or Comments in the bar for the document as a whole. Commenting needs a GitHub account. A requirement shows its short title and its status on each side of the platform. Open it to read the full requirement, what is still missing and where it came from. A dot means the side has nothing to build. Delivery dates are set once the document is complete.</p>
+<p>Every level opens and closes. There are two ways to comment. Select Discuss on a use case or a requirement for a thread about it, or Comments in the bar for the document as a whole; these need a GitHub account. Or select any text and annotate it with Hypothesis, as in Google Docs; the sidebar on the right lists every annotation, and a closed level that contains one is marked with a notes label. Annotations need a free Hypothesis account. A requirement shows its short title and its status on each side of the platform. Open it to read the full requirement, what is still missing and where it came from. A dot means the side has nothing to build. Delivery dates are set once the document is complete.</p>
 <div class="legend"><span class="s done"><b>DONE</b></span> Merged to dev on every part it needs, on live data
 <span class="s partial"><b>PARTIAL</b></span> Some of it is merged, or the screen uses mock data
 <span class="s todo"><b>TO DO</b></span> Nothing merged yet</div></div></details>
@@ -320,7 +325,28 @@ summary:hover button.talk, button.talk:focus { opacity:1; border-color:var(--par
     if (a && a.getAttribute("href") === location.hash) follow();
   });
   follow();
+
+  // Hypothesis wraps highlighted text in <hypothesis-highlight> elements. Mark every closed level
+  // that contains one, and open the levels above a highlight when its card is selected in the sidebar.
+  var pending = false;
+  function markNotes() {
+    pending = false;
+    all("summary.has-notes").forEach(function (s) { s.classList.remove("has-notes"); });
+    all("hypothesis-highlight").forEach(function (h) {
+      for (var n = h.parentElement; n; n = n.parentElement) {
+        if (n.tagName === "DETAILS" && n.firstElementChild) n.firstElementChild.classList.add("has-notes");
+      }
+    });
+  }
+  new MutationObserver(function (changes) {
+    changes.forEach(function (c) {
+      if (c.type === "attributes" && c.target.classList.contains("hypothesis-highlight-focused")) openTo(c.target);
+    });
+    if (!pending) { pending = true; requestAnimationFrame(markNotes); }
+  }).observe(document.querySelector("main"), { childList: true, subtree: true, attributes: true, attributeFilter: ["class"] });
 })();
 </script>
+<script type="application/json" class="js-hypothesis-config">{"showHighlights": "always", "openSidebar": false}</script>
+<script src="https://hypothes.is/embed.js" async></script>
 </body>
 </html>
