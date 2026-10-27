@@ -340,8 +340,6 @@ details.sec h2 .updn { font-size:11px; vertical-align:5px; }
 .pane li.recent, .pvpane li.recent, .pvwait.recent { box-shadow:inset 2px 0 0 var(--chg); background:var(--chg-bg); padding-left:6px; border-radius:2px; }
 .mk.chgm { right:15px; width:5px; height:5px; margin-top:-2.5px; border-radius:1px; background:var(--chg); z-index:3; }
 
-.chpanel { position:fixed; left:16px; bottom:16px; z-index:80; width:min(390px, calc(100vw - 32px)); max-height:min(72vh, 660px); display:flex; flex-direction:column; background:#fff; border:1px solid var(--chg-line); border-top:3px solid var(--chg); border-radius:10px; box-shadow:0 12px 32px rgba(15,27,61,.18); }
-.chpanel[hidden], .chmini[hidden] { display:none; }
 .chhead { display:flex; align-items:center; gap:6px; padding:10px 12px 0 14px; }
 .chhead span { margin-right:auto; font-family:"JetBrains Mono", monospace; font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--chg); }
 .chfold, .chclose { font:inherit; font-size:16px; line-height:1; width:24px; height:24px; border:1px solid var(--rule2); border-radius:50%; background:#fff; color:var(--muted); cursor:pointer; }
@@ -358,24 +356,6 @@ details.sec h2 .updn { font-size:11px; vertical-align:5px; }
 .chsum { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 14px 6px; font-size:12px; color:var(--muted); border-bottom:1px solid var(--rule); }
 .chnext { font:inherit; font-size:12px; font-weight:600; color:#fff; background:var(--chg); border:0; border-radius:999px; padding:3px 12px; cursor:pointer; }
 .chnext:disabled { background:var(--rule2); cursor:default; }
-.chlist { list-style:none; margin:0; padding:4px 6px 8px; overflow:auto; }
-.chlist li.grp { font-family:"JetBrains Mono", monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:8px 8px 2px; }
-.chlist li.it { display:grid; grid-template-columns:22px minmax(0,1fr); align-items:start; border-radius:5px; }
-.chlist li.it:hover { background:var(--chg-bg); }
-.chlist li.it input { margin:7px 0 0 6px; accent-color:var(--chg); cursor:pointer; }
-.chlist a { display:grid; grid-template-columns:70px minmax(0,1fr); gap:8px; padding:4px 8px 4px 4px; font-size:12.5px; color:var(--ink); }
-.chlist a:hover { text-decoration:none; }
-.chlist a .id { font-family:"JetBrains Mono", monospace; font-size:10.5px; color:var(--chg); padding-top:1px; }
-.chlist a small { display:block; color:var(--muted); font-size:11.5px; }
-.chlist li.it.seen a { color:var(--muted); }
-.chlist li.it.seen a .id { color:var(--faint); }
-.chlist li.none { padding:14px 8px; font-size:12.5px; color:var(--muted); }
-.chmini { position:fixed; left:16px; bottom:16px; z-index:80; display:flex; align-items:stretch; border-radius:999px; overflow:hidden; background:var(--chg); box-shadow:0 6px 18px rgba(15,27,61,.2); }
-.chmini button { font:inherit; font-size:12px; font-weight:600; color:#fff; background:none; border:0; cursor:pointer; }
-.chmini .chopen { padding:7px 12px; border-left:1px solid rgba(255,255,255,.3); border-right:1px solid rgba(255,255,255,.3); }
-.chmini .chstep { font-size:16px; line-height:1; padding:0 12px; }
-.chmini button:hover { background:rgba(255,255,255,.14); }
-.chmini button:disabled { opacity:.45; cursor:default; background:none; }
 
 /* ---- Sprint: the requirements ticketed in a sprint, marked in teal ---- */
 :root { --spr:#2F7480; --spr-bg:#E6F2F3; --spr-line:#BFDCDF; }
@@ -395,8 +375,6 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
 .spbox li em { font-style:normal; font-size:11.5px; color:#8A4B00; }
 .spbox li small { font-size:11.5px; color:var(--muted); white-space:nowrap; }
 .tkey { font-family:"JetBrains Mono", monospace; font-size:11px; font-weight:600; color:var(--spr); text-decoration:underline; text-decoration-color:var(--spr-line); text-underline-offset:2px; }
-.sppanel { position:fixed; left:16px; bottom:16px; z-index:80; width:min(400px, calc(100vw - 32px)); max-height:min(72vh, 660px); display:flex; flex-direction:column; background:#fff; border:1px solid var(--spr-line); border-top:3px solid var(--spr); border-radius:10px; box-shadow:0 12px 32px rgba(15,27,61,.18); }
-.sppanel[hidden], .spmini[hidden] { display:none; }
 .sphead { display:flex; align-items:baseline; gap:8px; padding:10px 12px 0 14px; }
 .sphead span { font-family:"JetBrains Mono", monospace; font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--spr); }
 .sphead small { margin-right:auto; font-size:11.5px; color:var(--muted); }
@@ -407,34 +385,51 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
 .spsum { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 14px 6px; font-size:12px; color:var(--muted); border-bottom:1px solid var(--rule); }
 .spnext { font:inherit; font-size:12px; font-weight:600; color:#fff; background:var(--spr); border:0; border-radius:999px; padding:3px 12px; cursor:pointer; white-space:nowrap; }
 .spnext:disabled { background:var(--rule2); cursor:default; }
-.splist { list-style:none; margin:0; padding:4px 6px 8px; overflow:auto; }
-.splist li.grp { font-family:"JetBrains Mono", monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:8px 8px 2px; }
-.splist li.it { display:grid; grid-template-columns:22px minmax(0,1fr); align-items:start; border-radius:5px; }
-.splist li.it:hover { background:var(--spr-bg); }
-.splist li.it input { margin:7px 0 0 6px; cursor:pointer; }
-.splist a { display:grid; grid-template-columns:70px minmax(0,1fr); gap:8px; padding:4px 8px 4px 4px; font-size:12.5px; color:var(--ink); }
-.splist a:hover { text-decoration:none; }
-.splist a .id { font-family:"JetBrains Mono", monospace; font-size:10.5px; color:var(--spr); padding-top:1px; }
-.splist a small { display:block; color:var(--muted); font-size:11.5px; }
-.splist .st { font-weight:600; }
-.splist .st.done { color:var(--done); } .splist .st.partial { color:var(--part); }
-.splist li.it.reviewed a { color:var(--muted); }
-.splist li.it.reviewed a .id { color:var(--faint); }
-.splist li.loose { padding:4px 8px 4px 30px; font-size:12.5px; }
-.splist li.none { padding:14px 8px; font-size:12.5px; color:var(--muted); }
-.spmini { position:fixed; left:16px; bottom:16px; z-index:80; display:flex; align-items:stretch; border-radius:999px; overflow:hidden; background:var(--spr); box-shadow:0 6px 18px rgba(15,27,61,.2); }
-.spmini button { font:inherit; font-size:12px; font-weight:600; color:#fff; background:none; border:0; cursor:pointer; }
-.spmini .spopen { padding:7px 12px; border-left:1px solid rgba(255,255,255,.3); border-right:1px solid rgba(255,255,255,.3); }
-.spmini .spstep { font-size:16px; line-height:1; padding:0 12px; }
-.spmini button:hover { background:rgba(255,255,255,.14); }
-.spmini button:disabled { opacity:.45; cursor:default; background:none; }
 .mk.sprm { right:20px; width:5px; height:5px; margin-top:-2.5px; border-radius:50%; background:var(--spr); z-index:3; }
 
+/* ---- the Changes and Sprint lists: one layout, each in its own colour ---- */
+.chpanel, .chmini { --acc:var(--chg); --acc-bg:var(--chg-bg); --acc-line:var(--chg-line); }
+.sppanel, .spmini { --acc:var(--spr); --acc-bg:var(--spr-bg); --acc-line:var(--spr-line); }
+/* docked at the right, full height; the page narrows while a list is open */
+.chpanel, .sppanel { position:fixed; top:0; right:0; bottom:0; z-index:70; width:380px; display:flex; flex-direction:column; background:#fff; border-left:1px solid var(--rule2); border-top:3px solid var(--acc); }
+.chpanel[hidden], .sppanel[hidden], .chmini[hidden], .spmini[hidden] { display:none; }
+.list-open { --dock:380px; padding-right:var(--dock); }
+/* the entries: white tiles on grey, with a round tick at the right */
+.chlist, .splist { flex:1; list-style:none; margin:0; padding:8px 10px 10px; overflow:auto; background:var(--soft); }
+.chlist li.grp, .splist li.grp { font-family:"JetBrains Mono", monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); padding:8px 4px 4px; }
+.chlist li.it, .splist li.it { display:grid; grid-template-columns:minmax(0,1fr) 34px; align-items:start; background:#fff; border:1px solid var(--rule); border-radius:8px; margin-bottom:6px; padding:4px 2px; transition:border-color .15s; }
+.chlist li.it:hover, .splist li.it:hover { border-color:var(--acc-line); }
+.chlist li.it input, .splist li.it input { order:2; -webkit-appearance:none; appearance:none; width:20px; height:20px; margin:8px 6px 0 0; border:1.5px solid var(--rule2); border-radius:50%; background:#fff; cursor:pointer; }
+.chlist li.it input:checked, .splist li.it input:checked { border-color:var(--acc); background:var(--acc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat; }
+.chlist a, .splist a { display:block; padding:6px 6px 6px 12px; font-size:12.5px; color:var(--ink); }
+.chlist a:hover, .splist a:hover { text-decoration:none; }
+.chlist a .id, .splist a .id { display:block; font-family:"JetBrains Mono", monospace; font-size:10px; color:var(--acc); }
+.chlist a small, .splist a small { display:block; margin-top:3px; color:var(--muted); font-size:11.5px; }
+.splist .st { font-size:10.5px; font-weight:600; border-radius:999px; padding:0 7px; margin-right:2px; background:var(--soft); color:var(--muted); }
+.splist .st.done { background:var(--done-bg); color:var(--done); }
+.splist .st.partial { background:var(--part-bg); color:var(--part); }
+.chlist li.it.seen, .splist li.it.reviewed { border-style:dashed; background:transparent; }
+.chlist li.it.seen a, .splist li.it.reviewed a { color:var(--muted); }
+.chlist li.it.seen a .id, .splist li.it.reviewed a .id { color:var(--faint); }
+.splist li.loose { padding:4px 4px; font-size:12.5px; }
+.chlist li.none, .splist li.none { padding:14px 4px; font-size:12.5px; color:var(--muted); }
+/* folded: a slim white pill at the middle of the right side, previous above, next below, the number left between */
+.chmini, .spmini { position:fixed; top:50%; right:calc(var(--dock) + 44px); transform:translateY(-50%); z-index:80; width:30px; display:flex; flex-direction:column; align-items:stretch; overflow:hidden; background:#fff; border:1px solid var(--acc-line); border-radius:999px; box-shadow:0 2px 10px rgba(15,27,61,.1); }
+.chmini button, .spmini button { font:inherit; color:var(--acc); background:none; border:0; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.chmini button:hover, .spmini button:hover { background:var(--acc-bg); }
+.chmini .chstep, .spmini .spstep { height:28px; font-size:0; padding:0; }
+.chstep::before, .spstep::before { content:""; width:7px; height:7px; border-left:2px solid currentColor; border-top:2px solid currentColor; transform:translateY(2px) rotate(45deg); }
+.chstep[data-step="1"]::before, .spstep[data-step="1"]::before { transform:translateY(-2px) rotate(225deg); }
+.chmini .chopen, .spmini .spopen { font-size:0; padding:3px 0; }
+.chopen::after, .spopen::after { content:attr(data-n); font-family:"JetBrains Mono", monospace; font-size:11px; font-weight:600; }
+.chmini button:disabled, .spmini button:disabled { opacity:.4; cursor:default; background:none; }
+
 @media (max-width:760px) {
-  .sppanel { left:8px; right:8px; bottom:8px; width:auto; max-height:45vh; }
+  .chpanel, .sppanel { top:auto; left:8px; right:8px; bottom:8px; width:auto; max-height:45vh; border:1px solid var(--rule2); border-top:3px solid var(--acc); border-radius:10px; box-shadow:0 12px 32px rgba(15,27,61,.18); }
+  .list-open { --dock:0px; padding-right:0; }
+  .chmini, .spmini { right:8px; }
   .spbox li { grid-template-columns:70px minmax(0,1fr); }
   .spbox li small { grid-column:2; }
-  .chpanel { left:8px; right:8px; bottom:8px; width:auto; max-height:45vh; }
   .chgbox li { grid-template-columns:1fr; gap:0; }
   details.prv > summary { grid-template-columns:14px minmax(0,1fr) auto; grid-template-areas:"ch name st" "ch tk tk"; row-gap:8px; }
   .pvdate { display:none; }
@@ -1093,6 +1088,7 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
     count.textContent = shown.length ? shown.length + " changed · " + n + " seen" : "";
     next.disabled = n === shown.length;
     opener.textContent = "Changes · " + (shown.length - n) + " to see";
+    opener.dataset.n = shown.length - n; opener.title = opener.textContent + ": show the list";
     mini.querySelectorAll(".chstep").forEach(function (b) { b.disabled = n === shown.length; });
   }
 
@@ -1161,7 +1157,10 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
     if (r && (!range || r.from !== range.from || r.to !== range.to || r.kind !== kind)) show(r, phone.matches && !range);
     else if (!r && range) close();
   }
-  addEventListener("prd:panel", function (e) { if (e.detail !== "changes" && range) close(); });
+  addEventListener("prd:panel", function (e) {
+    if (e.detail === "comments") { if (!panel.hidden) fold(); }
+    else if (e.detail !== "changes" && range) close();
+  });
   addEventListener("hashchange", fromAddress);
   fromAddress();
 })();
@@ -1276,6 +1275,7 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
     count.textContent = shown.length + " requirements · " + Object.keys(tickets).length + " tickets · " + n + " reviewed";
     next.disabled = n === shown.length;
     opener.textContent = DATA.sprints[sprint].name + " · " + (shown.length - n) + " to review";
+    opener.dataset.n = shown.length - n; opener.title = opener.textContent + ": show the list";
     mini.querySelectorAll(".spstep").forEach(function (b) { b.disabled = n === shown.length; });
   }
 
@@ -1293,7 +1293,10 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
     panel.hidden = true; mini.hidden = true; btn.setAttribute("aria-expanded", "false");
     sprint = null; team = ""; shown = []; writeAddress(); clearMarks(); dispatchEvent(new Event("resize"));
   }
-  addEventListener("prd:panel", function (e) { if (e.detail !== "sprint") close(); });
+  addEventListener("prd:panel", function (e) {
+    if (e.detail === "comments") { if (!panel.hidden) fold(); }
+    else if (e.detail !== "sprint") close();
+  });
   btn.addEventListener("click", function () { if (sprint) close(); else show(DATA.current, ""); });
   document.getElementById("spfold").addEventListener("click", fold);
   document.getElementById("spclose").addEventListener("click", close);
@@ -1323,6 +1326,21 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
 })();
 </script>
 <script>
+// A list docked at the right (Changes or Sprint) narrows the page like Comments, and closes Comments.
+(function () {
+  var panels = [document.getElementById("chpanel"), document.getElementById("sppanel")];
+  function sync() {
+    var open = panels.some(function (p) { return !p.hidden; });
+    if (open === document.body.classList.contains("list-open")) return;
+    document.body.classList.toggle("list-open", open);
+    if (open && window.PRDComments) window.PRDComments.open(false);
+    dispatchEvent(new Event("resize"));
+  }
+  panels.forEach(function (p) { new MutationObserver(sync).observe(p, { attributes: true, attributeFilter: ["hidden"] }); });
+  sync();
+})();
+</script>
+<script>
 // Hypothesis puts its sidebar in our panel (#hyp), so it draws no tab or toolbar at the window edge.
 // Its colours follow the page: green links and buttons on white. Fonts must exist on the reader's computer,
 // because the sidebar is a separate page that cannot load ours.
@@ -1344,6 +1362,7 @@ window.hypothesisConfig = function () {
   // Only on a change: the resize below makes Hypothesis report its layout again, which calls this again.
   function setOpen(open) {
     if (panel.hidden === !open) return;
+    if (open) dispatchEvent(new CustomEvent("prd:panel", { detail: "comments" }));
     panel.hidden = !open;
     body.classList.toggle("cmt-open", open);
     btn.setAttribute("aria-expanded", open ? "true" : "false");
