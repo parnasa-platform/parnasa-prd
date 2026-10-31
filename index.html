@@ -1218,7 +1218,7 @@ details.sec h2 .spn { font-size:11px; vertical-align:5px; }
       html += '<li class="it" data-id="' + e.id + '"><input type="checkbox" data-seen="' + e.id + '" aria-label="Seen">' +
         '<a href="#' + e.id + '"><span class="id">' + e.id + "</span><span>" + esc(e.title) + "<small>" + esc(gist(e)) + " · " + short(e.latest) + "</small></span></a></li>";
     });
-    list.innerHTML = html || '<li class="none">' + (kind ? "No development work was recorded in this range." : "Nothing was recorded in this range.") + "</li>";
+    list.innerHTML = html || '<li class="none">' + (kind ? "No development work happened in this range." : "Nothing changed in this range.") + "</li>";
     panel.querySelectorAll(".chkind button").forEach(function (b) { b.classList.toggle("on", b.dataset.kind === kind); });
     drawCal();
     mark();
